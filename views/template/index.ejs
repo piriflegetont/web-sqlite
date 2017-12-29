@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hello, World!</title>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script>
+		$(document).ready(function (e) {
+			$.ajax({
+				type: "GET",
+				url: "/ajax",
+				data: {userName: 'admin', userAge: 'ION-admin'},
+				dataType: "json",
+				contentType: "application/json",
+				success: function (data) {
+					setTimeout(() => {
+						$('#example').text(JSON.stringify(data, null, 2));
+					}, 2000)
+				},
+			});
+		});
+    </script>
+</head>
+<body>
+<table>
+
+    <% for(var i = 0; i < results.length; i++) { %>
+    <tr>
+        <td><%= results[i].id %></td>
+        <td><%= results[i].name %></td>
+        <td><%= results[i].group_name %></td>
+    </tr>
+    <% } %>
+</table>
+<div id="example">Ajax request example</div>
+</body>
+</html>

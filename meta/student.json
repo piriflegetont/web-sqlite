@@ -1,0 +1,19 @@
+{
+  "name": "student",
+  "attr": [
+    {
+      "name": "id",
+      "type": "id"
+    },
+    {
+      "name": "name",
+      "type": "text"
+    },
+    {
+      "name": "specialty",
+      "type": "ref",
+      "src": "Specialties",
+      "srcAttr": "group_name"
+    }
+  ]
+}

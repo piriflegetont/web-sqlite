@@ -1,0 +1,13 @@
+{
+  "name": "Specialties",
+  "attr": [
+    {
+      "name": "id",
+      "type": "id"
+    },
+    {
+      "name": "group_name",
+      "type": "text"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+'use strict';
+let ejs = require('ejs');
+let express = require('express');
+let dbSqlite = require('./lib/impl/sqlite');
+let db = new dbSqlite();
+
+const app = express();
+const port = process.env.PORT || 3000;
+
+
+app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'html');
+
+app.get('/student', async (req, res, next) => {
+	try {
+        let array = await db.getList('student');
+		res.render('./template/index.ejs', {title: "Announcement page", results: array, results2:''});
+	} catch (err) {
+		next(err);
+	}
+});
+app.get("/ajax", function(request, response){
+	let jsonParser = request.query;
+	response.send(jsonParser);
+
+});
+app.listen(port);
